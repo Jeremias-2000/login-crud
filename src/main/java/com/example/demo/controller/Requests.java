@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 public interface Requests {
@@ -16,10 +17,10 @@ public interface Requests {
     ResponseEntity<?> getEmail(@PathVariable("email") String email);
 
     @PostMapping("/Sign up")
-    void save(@RequestBody User user);
+    void save(@Validated @RequestBody User user);
 
     @PutMapping("update/{id}")
-    ResponseEntity<?> updateUser(@PathVariable("id") String id,@RequestBody User user);
+    ResponseEntity<?> updateUser(@PathVariable("id") String id,@Validated @RequestBody User user);
 
 
     @DeleteMapping("delete user/{id}")
